@@ -4,12 +4,16 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import page.LoginPage;
 
 import java.util.concurrent.TimeUnit;
 
 public class BaseTest {
     protected WebDriver _driver;
 
+    @BeforeTest
     void setUp(){
         WebDriverManager.chromedriver().setup();
         _driver = new ChromeDriver();
@@ -18,11 +22,12 @@ public class BaseTest {
 
         _driver.get("https://opensource-demo.orangehrmlive.com/");
 
-        _driver.findElement(By.id("txtUsername")).sendKeys("Admin");
-        _driver.findElement(By.id("txtPassword")).sendKeys("admin123");
-        _driver.findElement(By.id("btnLogin")).click();
+        LoginPage loginPage = new LoginPage(_driver);
+        loginPage.loginCred("Admin", "admin123");
+        loginPage.click();
     }
 
+    @AfterTest
     void tearDown(){
         _driver.quit();
     }
