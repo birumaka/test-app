@@ -1,5 +1,6 @@
 package test;
 
+import base.GetProperties;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -19,10 +20,13 @@ public class BaseTest {
         _driver.manage().window().maximize();
         _driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 
-        _driver.get("https://opensource-demo.orangehrmlive.com/");
+        _driver.get(GetProperties.getPropValue().getProperty("baseURL"));
+
+        String userName = GetProperties.getPropValue().getProperty("username");
+        String password = GetProperties.getPropValue().getProperty("password");
 
         LoginPage loginPage = new LoginPage(_driver);
-        loginPage.loginCred("Admin", "admin123");
+        loginPage.loginCred(userName, password);
         loginPage.click();
     }
 
