@@ -1,6 +1,6 @@
 package test;
 
-import base.GetProperties;
+import base.ProjectConfiguration;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -20,10 +20,10 @@ public class BaseTest {
         _driver.manage().window().maximize();
         _driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 
-        _driver.get(GetProperties.getPropValue().getProperty("baseURL"));
+        _driver.get(ProjectConfiguration.getPropValue().getProperty("baseURL"));
 
-        String userName = GetProperties.getPropValue().getProperty("username");
-        String password = GetProperties.getPropValue().getProperty("password");
+        String userName = ProjectConfiguration.getPropValue().getProperty("username");
+        String password = ProjectConfiguration.getPropValue().getProperty("password");
 
         LoginPage loginPage = new LoginPage(_driver);
         loginPage.loginCred(userName, password);
