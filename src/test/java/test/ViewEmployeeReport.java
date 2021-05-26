@@ -7,7 +7,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import page.HomePage;
 
-public class ViewEmployeeReport extends BaseTest{
+public class ViewEmployeeReport extends BaseTest {
     @Test
     void ViewEmpReport(){
         HomePage homePage = new HomePage(_driver);
