@@ -19,6 +19,8 @@ jobs:
       with:
         java-version: '11'
         distribution: 'adopt'
+    - name: Install Chrome
+      uses: browser-actions/setup-chrome@latest
     - name: Build with Maven
       run: mvn -B package --file pom.xml
     
