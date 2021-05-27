@@ -14,8 +14,12 @@ public class BaseTest {
     protected WebDriver _driver;
 
     @BeforeTest
-    void setUp(){
+    void setUp(){     
         WebDriverManager.chromedriver().setup();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--headless");
         _driver = new ChromeDriver();
         _driver.manage().window().maximize();
         _driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
