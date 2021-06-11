@@ -3,7 +3,7 @@
 <suite name="test-app Test Suite">
     <test verbose="2"  name="C:/Users/Leapfrog/Desktop/test-app">
         <classes>
-            <class name="test.ViewEmployeeReport"></class>
+            <class name="test.ViewEmployeeReportTest"/>
         </classes>
     </test>
 </suite>
